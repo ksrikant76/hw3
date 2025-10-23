@@ -85,10 +85,33 @@ int main(int argc, char* argv[])
     cout << "Original list: ";
     print(head);
 
-    // Test out your linked list code
+    //llfilter test
+    struct RemoveEven {
+        bool operator()(int x) {
+            return (x % 2) == 0;
+        }
+    };
+    head = llfilter(head, RemoveEven{});
+    cout << "List with removed evens: ";
+    print(head);
 
+    //llpivot test
+    Node* smaller = NULL;
+    Node* larger = NULL;
+    int pivot = 5;
+    llpivot(head, smaller, larger, pivot);
+    
+    cout << "Smaller: ";
+    print(smaller);
+    cout << "Larger: ";
+    print(larger);
 
+    
 
+    //Deallocate
+    dealloc(head);
+    dealloc(smaller);
+    dealloc(larger);
     
     return 0;
 
